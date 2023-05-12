@@ -1,0 +1,22 @@
+<div>
+    <h2>{{station?.name}}</h2>
+
+    <p>Address: {{station?.address}}</p>
+    <p>Position: </p>
+    <ul>
+        <li>Latitud: {{station?.position?.lat}}</li>
+        <li>Longitud: {{station?.position?.lng}}</li>
+    </ul>
+    <p>Status: {{station?.status}}</p>
+    <p>Abailable bikes: {{station?.available_bikes}}</p>
+    <button type="button" (click)="getWeather()">Weather</button>
+</div>
+<div *ngIf="location">
+    <h2>The Weather at {{station?.address}} is:</h2>
+    <p>Temperature: {{location?.main?.temp + 'k'}}</p>
+    <p>Weather: {{location?.weather?.[0]?.main}}</p>
+    <p>Temperature: {{location?.main?.temp + 'k'}}</p>
+
+
+
+</div>
