@@ -1,7 +1,12 @@
 <div>
-    <div id="stations">
+    <div>
+        <label for="filter">Search Text</label>
+        <input type=" text" id="filter" [(ngModel)]="filterBy" />
+    </div>
+
+    <div>
         <table>
-            <tr *ngFor="let station of stations">
+            <tr *ngFor="let station of stations! | filter: filterBy: 'name'">
                 <td>{{station.number}}:{{station.name}}</td>
                 <td><a routerLink="/detail/{{station.number}}"><button>Detail</button></a></td>
 

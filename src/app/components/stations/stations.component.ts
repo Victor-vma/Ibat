@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Station } from 'src/app/modules/station';
 import { StationService } from 'src/app/services/station.service';
 
@@ -10,16 +11,19 @@ import { StationService } from 'src/app/services/station.service';
 export class StationsComponent implements OnInit {
   constructor(private stationService: StationService) { }
 
+
   ngOnInit(): void {
     this.getStations();
 
   }
 
-  stations?: Station[];
+
 
   getStations(): void {
 
     this.stationService.getStations().subscribe(stations => this.stations = stations)
 
   }
+  stations?: Station[];
+  filterBy = '';
 }
