@@ -16,12 +16,14 @@ export class StationDetailsComponent implements OnInit {
 
   @Input() station?: Station;
   @Input() location?: Location;
+  // tempC: any;
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private stationService: StationService,
     // private locationService: LocationService
   ) { }
+
   ngOnInit(): void {
     this.getStation();
 
@@ -44,10 +46,11 @@ export class StationDetailsComponent implements OnInit {
     const apiKey: string = '752aedbb47946a307332c23563028c32';
     const endpointUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${apiKey}`;
     this.http.get<Location>(endpointUrl).subscribe(location => this.location = location)
-
+    // this.tempC = this.location?.main?.temp ? - 273.15 :
 
     console.log(this.location?.coord.lat)
-    this.renderWeatherData();
+
+
   }
 
 
@@ -67,6 +70,8 @@ export class StationDetailsComponent implements OnInit {
   // }
   renderWeatherData(): void {
     console.log(this.location?.base)
+
+
 
   }
 }

@@ -12,11 +12,9 @@
     <button type="button" (click)="getWeather()">Weather</button>
 </div>
 <div *ngIf="location">
-    <h2>The Weather at {{station?.address}} is:</h2>
-    <p>Temperature: {{location?.main?.temp + 'k'}}</p>
-    <p>Weather: {{location?.weather?.[0]?.main}}</p>
-    <p>Temperature: {{location?.main?.temp + 'k'}}</p>
-
-
-
-</div>
+    <ng-template #temp [ngTemplateOutlet]="temp" let-a="aVariable"
+        [ngTemplateOutletContext]="{ aVariable: (location.main.temp - 273.15)}">
+        <h2>The Weather at {{station?.address}} is:</h2>
+        <p>Temperature: {{(a | number: '1.0-0' )+ 'C'}}</p>
+        <p>Weather: {{location?.weather?.[0]?.main}}</p>
+        <p>Temperature: {{(a | number: '1.0-0' )+ 'C'}}</p>
